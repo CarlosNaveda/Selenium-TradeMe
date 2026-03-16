@@ -28,12 +28,12 @@ public class BasePage {
 
     private List<WebElement> getOptionsSelect(String locator) {
 
-        List<WebElement> options;
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
-        Select select = new Select(getWebElement(locator));
-        options = select.getOptions();
+        //Nos aseguramos que estén todas las opciones dentro
+        WebElement select = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+        wait.until(driver -> select.findElements(By.tagName("option")).size() > 1);
 
-        return options;
+        //Ahora si devolvemos la Lista las opciones del Select
+        return select.findElements(By.tagName("option"));
     }
 
     public void navigateTo(String url) {
@@ -44,7 +44,7 @@ public class BasePage {
         getWebElement(locator).click();
     }
 
-    public List<String> getListElements (String locator) {
+    public List<String> getListOptionsSelect (String locator) {
         List<String> list = new ArrayList<>();
 
         for (WebElement element : getOptionsSelect(locator)) {

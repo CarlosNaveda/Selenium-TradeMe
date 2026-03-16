@@ -3,6 +3,7 @@ package steps;
 
 import io.cucumber.java.en.*;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 import pages.TradeMePage;
 
 import java.util.ArrayList;
@@ -27,9 +28,11 @@ public class TradeMeSteps {
         tradeMePage.clickHeaderMakeDropbox();
     }
 
-    @Then("get the numbers of car's model available to search")
-    public void getTheNumbersOfCarsModelAvailableToSearch() {
-        tradeMePage.getListOfCarsModelAvailableToSearch();
+    @Then("the numbers of car's model available to search is {int}")
+    public void getTheNumbersOfCarsModelAvailableToSearch(int numberOfCarsExpected) {
+        int numberOfCarsAvailable = tradeMePage.getSizeListOfCarsModelAvailableToSearch();
+        Assert.assertEquals(numberOfCarsAvailable,numberOfCarsExpected);
+
     }
 
 

@@ -5,7 +5,7 @@ Feature: Test website TradeMe to get numbers of options and cars
     Given The user go to website TradeMe
     When go to the header's option motor
     And select the Make's dropbox
-    Then get the numbers of car's model available to search
+    Then the numbers of car's model available to search is 98
 
 
 #  @Test2

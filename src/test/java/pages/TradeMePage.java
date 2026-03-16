@@ -22,10 +22,10 @@ public class TradeMePage extends BasePage {
         click(makeDropbox);
     }
 
-    public void getListOfCarsModelAvailableToSearch(){
-        List<String> list = getListElements(makeDropbox);
-        System.out.println("List size: " + list.size());
-        System.out.println("List of cars: " + list);
+    public int getSizeListOfCarsModelAvailableToSearch(){
+        List<String> list = getListOptionsSelect(makeDropbox);
+        return list.size();
+
     }
 
 
