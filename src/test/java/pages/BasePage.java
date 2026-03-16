@@ -44,6 +44,9 @@ public class BasePage {
         getWebElement(locator).click();
     }
 
+    public String getTextWebElement(String locator) {
+        return getWebElement(locator).getText();
+    }
     public List<String> getListOptionsSelect (String locator) {
         List<String> list = new ArrayList<>();
 
@@ -54,7 +57,10 @@ public class BasePage {
         return list;
     }
 
-
+    public void selectOption(String locator, String option) {
+        Select select = new Select(getWebElement(locator));
+        select.selectByVisibleText(option);
+    }
 
 
 

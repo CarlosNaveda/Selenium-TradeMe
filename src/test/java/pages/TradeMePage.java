@@ -1,6 +1,5 @@
 package pages;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TradeMePage extends BasePage {
@@ -8,6 +7,8 @@ public class TradeMePage extends BasePage {
 
     private String routerLinkMotor = "//a[@routerlink=\"/motors\"]";
     private String makeDropbox = "//select[@name='selectedMake']";
+    private String searchButton ="//button[contains(.,'View listings')]";
+    private String resultNumberSearch="//h3[contains(.,' Showing ')]";
 
     public TradeMePage() {
         super();
@@ -28,6 +29,16 @@ public class TradeMePage extends BasePage {
 
     }
 
+    public void clickSearchButton(){
+        click(searchButton);
+    }
 
+    public void selectModelCarInTheMakeDropbox(String modelCar){
+        selectOption(makeDropbox, modelCar);
+    }
+
+    public String getTextResultsOfCars() {
+        return getTextWebElement(resultNumberSearch);
+    }
 
 }
